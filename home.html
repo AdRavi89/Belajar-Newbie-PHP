@@ -1,0 +1,225 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Pendataan Warga</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .content {
+            width: 320px;
+            padding: 0px;
+            margin: 0;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            background-color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: right;
+        }
+
+        .active {
+            background-color: #173A5F;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: #ff1f57;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #ffac42;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #173A5F;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: gray;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            background-color: #173A5F;
+            color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .responsive {
+                width: 100%;
+            }
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li style="float:left"><a class="active" href="home.html">Aplikasi Pendataan Warga Tanah Putih</a></li>
+        <li><a href="admin/logout.php" input type="submit" name="tombol" value="Logout">Logout</a></li>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Hubungi Kami</a></li>        
+        <!-- <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Menu</a>
+            <div class="dropdown-content">
+                <a href="laptop.html">Tambah Data</a>
+                <a href="tv.html">Edit Data</a>
+                <a href="tablet.html">Hapus Data</a>
+                <a href="smartphone.html">Cetak Data</a>
+            </div>
+        </li> -->
+        <li><a href="home.html">Home</a></li>
+    </ul>
+    <h3 style="text-align: left;">Home</h3>
+    
+
+    <div class="responsive">
+        <div class="gallery">
+            <form method="POST" action="php/eksekusi.php">
+                <input type="hidden" name="id_warga" value="<?php echo $d['id_warga']; ?>">
+                <button type="submit" name="tombol" value="Tambah" class="button-link">
+                    <img src="img/add.png" alt="Edit" width="600" height="400">                 
+                    <div class="desc"><h4>Tambah Data</h4></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="gallery">
+            <form method="POST" action="php/tampil.edit.php">
+                <input type="hidden" name="id_warga" value="<?php echo $d['id_warga']; ?>">
+                <button type="submit" name="tombol" value="Edit" class="button-link">
+                    <img src="img/edit.png" alt="Edit" width="600" height="400">
+                    <div class="desc"><h4>Edit Data</h4></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="gallery">
+            <form method="POST" action="php/tampil.hapus.php">
+                <input type="hidden" name="id_warga" value="<?php echo $d['id_warga']; ?>">
+                <button type="submit" name="tombol" value="Hapus" class="button-link">
+                    <img src="img/hapus.png" alt="Hapus" width="600" height="400">
+                    <div class="desc"><h4>Hapus Data</h4></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="responsive">
+        <div class="gallery">
+            <form method="POST" action="php/tampil.cetak.php">
+                <input type="hidden" name="id_warga" value="<?php echo $d['id_warga']; ?>">
+                <button type="submit" name="tombol" value="Cetak" class="button-link">
+                    <img src="img/cetak.png" alt="Cetak" width="600" height="400">
+                    <div class="desc"><h4>Cetak Data</h4></div>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="footer">
+	        <h6>&copy2023 | Pendataan Warga </h6>
+    </div>
+</body>
+
+</html>
